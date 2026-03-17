@@ -1,0 +1,82 @@
+/* src/assets/custom.css */
+:root {
+  --primary-color: #0d6efd;
+  --sidebar-bg: #f8f9fa;
+  --card-hover: #f8f9fa;
+}
+
+.sidebar {
+  min-height: 100vh;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid #dee2e6;
+}
+
+.nav-link {
+  color: #495057;
+  padding: 0.8rem 1rem;
+  margin: 0.2rem 0;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #e9ecef;
+  color: var(--primary-color);
+}
+
+.nav-link.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.nav-link i {
+  margin-right: 0.5rem;
+}
+
+.course-card {
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.progress {
+  height: 0.5rem;
+}
+
+.stat-card {
+  border-left: 4px solid var(--primary-color);
+  background: white;
+  transition: transform 0.3s;
+}
+
+.stat-card:hover {
+  transform: scale(1.02);
+}
+
+.activity-item {
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+  transition: background-color 0.3s;
+}
+
+.activity-item:hover {
+  background-color: var(--card-hover);
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
