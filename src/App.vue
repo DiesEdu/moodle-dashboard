@@ -15,10 +15,10 @@
           <!-- Mobile sidebar -->
           <div
             v-if="showMobileSidebar"
-            class="mobile-sidebar-overlay"
+            class="mobile-sidebar-overlay animate-fade-in"
             @click="showMobileSidebar = false"
           >
-            <div class="mobile-sidebar" @click.stop>
+            <div class="mobile-sidebar animate-slide-in-left" @click.stop>
               <Sidebar />
             </div>
           </div>

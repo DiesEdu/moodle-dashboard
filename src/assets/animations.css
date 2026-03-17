@@ -1,0 +1,861 @@
+/* ========================================
+   MOODLE DASHBOARD - ANIMATIONS & EFFECTS
+   Elegant • Luxurious • Fun
+   ======================================== */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  --anim-gold: #d4af37;
+  --anim-luxury-dark: #1a1a2e;
+  --anim-luxury-light: #f5f5f5;
+  --anim-shadow-luxury: 0 10px 40px rgba(0, 0, 0, 0.15);
+  --anim-shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.25);
+  --anim-glow: 0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+/* ===== ENTRANCE ANIMATIONS ===== */
+
+/* Fade In Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Left */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade In Right */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade In Down */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale In */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Staggered entrance - children */
+.animate-stagger > * {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.animate-stagger > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.animate-stagger > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.animate-stagger > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.animate-stagger > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.animate-stagger > *:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.animate-stagger > *:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.animate-stagger > *:nth-child(7) {
+  animation-delay: 0.7s;
+}
+.animate-stagger > *:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+/* ===== LUXURY CARD EFFECTS ===== */
+
+/* Luxury card with shimmer */
+.luxury-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.luxury-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.luxury-card:hover::before {
+  left: 100%;
+}
+
+.luxury-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--anim-shadow-hover);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* Golden glow effect on hover */
+.golden-glow {
+  position: relative;
+}
+
+.golden-glow::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, var(--anim-gold), transparent, var(--anim-gold));
+  border-radius: inherit;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  filter: blur(8px);
+}
+
+.golden-glow:hover::after {
+  opacity: 0.6;
+}
+
+/* ===== SHIMMER EFFECT FOR CARDS ===== */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-effect {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ===== HOVER EFFECTS ===== */
+
+/* Elegant lift */
+.elegant-lift {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.elegant-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--anim-shadow-hover);
+}
+
+/* Button shine on hover */
+.btn-luxury {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-luxury::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s ease,
+    height 0.6s ease;
+}
+
+.btn-luxury:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Icon bounce on hover */
+.icon-bounce {
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.icon-bounce:hover {
+  transform: scale(1.2);
+}
+
+/* ===== PROGRESS BAR ANIMATIONS ===== */
+
+/* Animated progress bar */
+@keyframes progressFill {
+  from {
+    width: 0;
+  }
+}
+
+.progress-animated .progress-bar {
+  animation: progressFill 1.5s ease-out forwards;
+}
+
+/* Pulsing progress bar */
+@keyframes pulseProgress {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.progress-pulse .progress-bar {
+  animation: pulseProgress 2s ease-in-out infinite;
+}
+
+/* Striped animated progress */
+.progress-striped .progress-bar {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: progress-stripes 1s linear infinite;
+}
+
+@keyframes progress-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* ===== FLOATING ANIMATIONS ===== */
+
+/* Floating element */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Floating with rotation */
+@keyframes floatRotate {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+.float-rotate {
+  animation: floatRotate 4s ease-in-out infinite;
+}
+
+/* Gentle bob */
+@keyframes gentleBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.gentle-bob {
+  animation: gentleBob 2s ease-in-out infinite;
+}
+
+/* ===== PULSE & GLOW EFFECTS ===== */
+
+/* Pulse animation */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px 10px rgba(212, 175, 55, 0);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Golden pulse */
+@keyframes goldenPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+  }
+}
+
+.golden-pulse {
+  animation: goldenPulse 2s ease-in-out infinite;
+}
+
+/* ===== ROTATE & SPIN EFFECTS ===== */
+
+/* Gentle rotate on hover */
+.rotate-on-hover {
+  transition: transform 0.4s ease;
+}
+
+.rotate-on-hover:hover {
+  transform: rotate(360deg);
+}
+
+/* Spin icon */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-animation {
+  animation: spin 2s linear infinite;
+}
+
+/* ===== NOTIFICATION DOT ANIMATION ===== */
+
+/* Notification badge pulse */
+@keyframes notificationPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.notification-badge {
+  animation: notificationPulse 2s ease-in-out infinite;
+}
+
+/* ===== CARD 3D FLIP EFFECT ===== */
+
+/* 3D Card hover */
+.card-3d-hover {
+  perspective: 1000px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card-3d-hover:hover {
+  transform: rotateY(10deg) rotateX(5deg);
+}
+
+/* ===== UNDERLINE ANIMATIONS ===== */
+
+/* Animated underline from left */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--anim-gold);
+  transition: width 0.3s ease;
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* ===== INPUT FOCUS EFFECTS ===== */
+
+/* Luxurious input focus */
+.input-luxury {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(white, white) padding-box,
+    linear-gradient(45deg, var(--anim-gold), #e0e0e0) border-box;
+}
+
+.input-luxury:focus {
+  outline: none;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+  border-color: var(--anim-gold);
+}
+
+/* Input shimmer */
+@keyframes inputShimmer {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+}
+
+.input-focus-animate:focus {
+  animation: inputShimmer 1.5s ease-in-out infinite;
+}
+
+/* ===== SIDEBAR ANIMATIONS ===== */
+
+/* Sidebar link hover */
+.sidebar-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.sidebar-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  background: var(--anim-gold);
+  border-radius: 0 4px 4px 0;
+  transition: width 0.3s ease;
+}
+
+.sidebar-link:hover::before,
+.sidebar-link.active::before {
+  width: 4px;
+  height: 60%;
+}
+
+/* Sidebar icon animation */
+.sidebar-icon {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.sidebar-link:hover .sidebar-icon,
+.sidebar-link.active .sidebar-icon {
+  transform: scale(1.2);
+  color: var(--anim-gold);
+}
+
+/* ===== AVATAR EFFECTS ===== */
+
+/* Avatar with ring */
+.avatar-ring {
+  position: relative;
+}
+
+.avatar-ring::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid var(--anim-gold);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.avatar-ring:hover::after {
+  opacity: 1;
+  animation: spin 3s linear infinite;
+}
+
+/* ===== DROPDOWN ANIMATIONS ===== */
+
+/* Dropdown fade */
+.dropdown-menu {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== BADGE EFFECTS ===== */
+
+/* Badge shimmer */
+@keyframes badgeShine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.badge-shine {
+  background: linear-gradient(
+    90deg,
+    currentColor 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    currentColor 75%
+  );
+  background-size: 200% 100%;
+  animation: badgeShine 3s infinite;
+}
+
+/* ===== PAGE TRANSITIONS ===== */
+
+/* Fade transition */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+/* Slide transition */
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.4s ease;
+}
+
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+/* ===== DECORATIVE ELEMENTS ===== */
+
+/* Floating gradient orbs */
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, -10px);
+  }
+  50% {
+    transform: translate(-5px, 15px);
+  }
+  75% {
+    transform: translate(-15px, 5px);
+  }
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.orb-1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--anim-gold), transparent);
+  animation: orbFloat 8s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #6366f1, transparent);
+  animation: orbFloat 10s ease-in-out infinite reverse;
+}
+
+/* ===== MOBILE SIDEBAR ===== */
+
+/* Mobile sidebar slide */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.mobile-sidebar {
+  animation: slideInLeft 0.3s ease forwards;
+}
+
+/* Overlay fade */
+.mobile-sidebar-overlay {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.3s ease forwards;
+}
+
+/* ===== STAT CARDS ===== */
+
+/* Counter animation */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-number {
+  animation: countUp 0.8s ease forwards;
+}
+
+/* ===== BUTTON EFFECTS ===== */
+
+/* Ripple effect button */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: rippleEffect 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ===== TOOLTIP ANIMATION ===== */
+
+/* Luxurious tooltip */
+.tooltip-luxury {
+  opacity: 0;
+  transform: translateY(5px);
+  transition: all 0.3s ease;
+}
+
+.tooltip-luxury.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== CHART ANIMATIONS ===== */
+
+/* Chart bar grow */
+@keyframes growBar {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.chart-bar {
+  transform-origin: bottom;
+  animation: growBar 1s ease forwards;
+}
+
+/* ===== CONFETTI EFFECT (for achievements) ===== */
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: confetti 3s ease-in-out forwards;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+
+/* Fade in on scroll */
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== STAGGERED REVEAL ===== */
+.stagger-reveal > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.stagger-reveal.visible > *:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.stagger-reveal.visible > *:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.stagger-reveal.visible > *:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.stagger-reveal.visible > *:nth-child(4) {
+  transition-delay: 0.4s;
+}
+.stagger-reveal.visible > *:nth-child(5) {
+  transition-delay: 0.5s;
+}
+.stagger-reveal.visible > *:nth-child(6) {
+  transition-delay: 0.6s;
+}
+
+.stagger-reveal.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== CURSOR EFFECTS ===== */
+
+/* Custom cursor glow */
+.cursor-glow {
+  cursor: pointer;
+}
+
+.cursor-glow:hover {
+  text-shadow: 0 0 10px var(--anim-gold);
+}
+
+/* ===== CARD IMAGE WRAPPER ===== */
+.card-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.3) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.course-card:hover .card-image-overlay {
+  opacity: 1;
+}
+
+.category-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, var(--primary-color), #6366f1) !important;
+  font-size: 0.7rem;
+  padding: 0.3em 0.6em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}

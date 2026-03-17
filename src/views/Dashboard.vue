@@ -2,25 +2,34 @@
 <template>
   <div class="dashboard">
     <!-- Welcome section -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h4>Welcome back, {{ user.name }}!</h4>
-      <div>
-        <button class="btn btn-outline-primary me-2"><i class="bi bi-download"></i> Reports</button>
-        <button class="btn btn-primary"><i class="bi bi-plus-circle"></i> New Course</button>
+    <div class="welcome-section animate-fade-in-up">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h4>Welcome back, {{ user.name }}!</h4>
+          <p class="text-muted mb-0">Ready to continue your learning journey?</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-luxury">
+            <i class="bi bi-download"></i> Reports
+          </button>
+          <button class="btn btn-primary btn-luxury">
+            <i class="bi bi-plus-circle"></i> New Course
+          </button>
+        </div>
       </div>
     </div>
 
     <!-- Statistics cards -->
-    <div class="row g-4 mb-4">
+    <div class="row g-4 mb-4 animate-stagger">
       <div class="col-md-3" v-for="(stat, index) in stats" :key="index">
-        <div class="stat-card p-3 rounded shadow-sm">
+        <div class="stat-card luxury-card p-3 rounded shadow-sm">
           <div class="d-flex justify-content-between align-items-center">
             <div>
               <h6 class="text-muted mb-2">{{ stat.label }}</h6>
-              <h3 class="mb-0">{{ stat.value }}</h3>
+              <h3 class="mb-0 stat-number">{{ stat.value }}</h3>
             </div>
-            <div :class="`bg-${stat.color} bg-opacity-10 p-3 rounded`">
-              <i :class="`bi ${stat.icon} fs-3 text-${stat.color}`"></i>
+            <div :class="`bg-${stat.color} bg-opacity-10 p-3 rounded golden-glow`">
+              <i :class="`bi ${stat.icon} fs-3 text-${stat.color} icon-bounce`"></i>
             </div>
           </div>
           <small :class="`text-${stat.trend > 0 ? 'success' : 'danger'}`">
@@ -34,13 +43,17 @@
     <div class="row g-4">
       <!-- Chart and Activity -->
       <div class="col-lg-8">
-        <ActivityChart :activityData="weeklyActivity" class="mb-4" />
+        <ActivityChart
+          :activityData="weeklyActivity"
+          class="mb-4 animate-fade-in-up"
+          style="animation-delay: 0.3s"
+        />
 
         <!-- Recent Activities -->
-        <div class="card">
+        <div class="card animate-fade-in-up" style="animation-delay: 0.4s">
           <div class="card-header bg-white d-flex justify-content-between align-items-center">
             <h6 class="mb-0">Recent Activities</h6>
-            <a href="#" class="text-decoration-none">View All</a>
+            <a href="#" class="text-decoration-none animated-underline">View All</a>
           </div>
           <div class="list-group list-group-flush">
             <div
@@ -56,7 +69,7 @@
                   <p class="mb-0 fw-bold">{{ activity.description }}</p>
                   <small class="text-muted">{{ activity.course }} • {{ activity.time }}</small>
                 </div>
-                <i class="bi bi-chevron-right text-muted"></i>
+                <i class="bi bi-chevron-right text-muted gentle-bob"></i>
               </div>
             </div>
           </div>
@@ -66,9 +79,9 @@
       <!-- Right Sidebar - Deadlines and Upcoming -->
       <div class="col-lg-4">
         <!-- Upcoming Deadlines -->
-        <div class="card mb-4">
+        <div class="card mb-4 animate-fade-in-right" style="animation-delay: 0.5s">
           <div class="card-header bg-white">
-            <h6 class="mb-0">Upcoming Deadlines</h6>
+            <h6 class="mb-0"><i class="bi bi-alarm me-2"></i>Upcoming Deadlines</h6>
           </div>
           <div class="card-body">
             <div v-for="deadline in deadlines" :key="deadline.id" class="mb-3">
@@ -81,20 +94,20 @@
                   {{ getDaysLeft(deadline.dueDate) }} days
                 </span>
               </div>
-              <div class="progress mt-2" style="height: 3px">
-                <div class="progress-bar bg-warning" style="width: 75%"></div>
+              <div class="progress mt-2 progress-animated" style="height: 3px">
+                <div class="progress-bar bg-warning progress-striped" style="width: 75%"></div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Continue Learning -->
-        <div class="card">
+        <div class="card animate-fade-in-right" style="animation-delay: 0.6s">
           <div class="card-header bg-white">
-            <h6 class="mb-0">Continue Learning</h6>
+            <h6 class="mb-0"><i class="bi bi-play-circle me-2"></i>Continue Learning</h6>
           </div>
           <div class="card-body">
-            <div v-for="course in courses.slice(0, 3)" :key="course.id" class="mb-3">
+            <div v-for="course in courses.slice(0, 3)" :key="course.id" class="mb-3 elegant-lift">
               <div class="d-flex align-items-center">
                 <img
                   :src="course.thumbnail"
@@ -105,7 +118,7 @@
                 <div class="flex-grow-1">
                   <h6 class="mb-0 small">{{ course.title }}</h6>
                   <small class="text-muted">{{ course.instructor }}</small>
-                  <div class="progress mt-1" style="height: 3px">
+                  <div class="progress mt-1 progress-animated" style="height: 3px">
                     <div class="progress-bar" :style="{ width: course.progress + '%' }"></div>
                   </div>
                 </div>
@@ -118,11 +131,16 @@
 
     <!-- My Courses Section -->
     <div class="mt-4">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5>My Courses</h5>
-        <router-link to="/courses" class="btn btn-link">View All Courses</router-link>
+      <div
+        class="d-flex justify-content-between align-items-center mb-3 animate-fade-in-up"
+        style="animation-delay: 0.7s"
+      >
+        <h5><i class="bi bi-collection me-2"></i>My Courses</h5>
+        <router-link to="/courses" class="btn btn-link animated-underline"
+          >View All Courses</router-link
+        >
       </div>
-      <div class="row g-4">
+      <div class="row g-4 stagger-reveal">
         <div v-for="course in courses.slice(0, 4)" :key="course.id" class="col-md-3">
           <CourseCard :course="course" />
         </div>
