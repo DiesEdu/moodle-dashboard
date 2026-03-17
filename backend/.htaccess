@@ -1,0 +1,44 @@
+# Moodle Dashboard Backend - URL Routing
+# Apache .htaccess configuration
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /moodle-dashboard/backend/
+    
+    # API Routing
+    RewriteRule ^api/user$ api/user.php [L]
+    RewriteRule ^api/courses$ api/courses.php [L]
+    RewriteRule ^api/activities$ api/activities.php [L]
+    RewriteRule ^api/deadlines$ api/deadlines.php [L]
+    RewriteRule ^api/stats$ api/stats.php [L]
+    RewriteRule ^api/weekly-activity$ api/weekly-activity.php [L]
+    RewriteRule ^api/dashboard$ api/index.php?endpoint=dashboard [L]
+    RewriteRule ^api$ api/index.php [L]
+    RewriteRule ^index$ index.php [L]
+    RewriteRule ^health$ index.php?path=health [L]
+    RewriteRule ^info$ index.php?path=info [L]
+    
+    # Prevent directory listing
+    Options -Indexes
+    
+    # Protect config files
+    <Files "config/database.php">
+        Order allow,deny
+        Deny from all
+    </Files>
+</IfModule>
+
+# PHP Settings
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 300
+    php_value memory_limit 256M
+</IfModule>
+
+# CORS Headers
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>

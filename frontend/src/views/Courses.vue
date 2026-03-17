@@ -63,13 +63,18 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useDashboardStore } from '../stores/dashboardStore'
 import CourseCard from '../components/CourseCard.vue'
 
 const store = useDashboardStore()
 const searchQuery = ref('')
 const selectedCategory = ref('')
+
+// Fetch courses on mount
+onMounted(() => {
+  store.fetchCourses()
+})
 
 const courses = computed(() => store.courses)
 

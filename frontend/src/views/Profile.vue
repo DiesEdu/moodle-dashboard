@@ -134,10 +134,16 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useDashboardStore } from '../stores/dashboardStore'
 
 const store = useDashboardStore()
+
+// Fetch user data on mount
+onMounted(() => {
+  store.fetchDashboardData()
+})
+
 const user = computed(() => store.user)
 const stats = computed(() => store.stats)
 

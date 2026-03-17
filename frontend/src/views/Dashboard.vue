@@ -150,17 +150,24 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useDashboardStore } from '../stores/dashboardStore'
 import ActivityChart from '../components/ActivityChart.vue'
 import CourseCard from '../components/CourseCard.vue'
 
 const store = useDashboardStore()
+
+// Fetch data on component mount
+onMounted(() => {
+  store.fetchDashboardData()
+})
+
 const user = computed(() => store.user)
 const courses = computed(() => store.courses)
 const recentActivities = computed(() => store.recentActivities)
 const deadlines = computed(() => store.deadlines)
 const weeklyActivity = computed(() => store.weeklyActivity)
+const isLoading = computed(() => store.isLoading)
 
 // Statistics with icons and colors
 const stats = computed(() => [
